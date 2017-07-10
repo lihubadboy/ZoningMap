@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>区划信息管理服务系统</title>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.4/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="lib/scrollbar/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="lib/datetimepicker/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="lib/bootstrap-notify/css/bootstrap-notify.css">
+  <script src="lib/jquery-2.1.1.min.js" type="text/javascript"></script>
+  <script src="lib/jquery.json.min.js" type="text/javascript"></script>
+  <script src="lib/bootstrap-notify/js/bootstrap-notify.js"></script>
+  <script src="lib/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="lib/echarts/echarts-all.js" type="text/javascript"></script>
+  <script src="lib/echarts/china.js" type="text/javascript"></script>
+  <script src="lib/bmap.min.js"></script>
+  <script src="lib/require.js" type="text/javascript"></script>
+  <script type="text/javascript" src="app/config/requireConfig.js"></script>
+  <script type="text/javascript" src="app/config/config.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-dark navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">
+          <img alt="logo" src="images/logo.png">
+          <img alt="logo" src="images/logo1.png">
+          <div class="navbar-title">
+            <span class="navbar-brand-subtext">《中国地震动参数区划图》GB18306-2015</span>
+            <span class="navbar-brand-text">信息管理服务系统</span>
+          </div>
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="login.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页</a>
+          </li>
+          <li class="active">
+            <a id="statics" href="statics.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 用量云图</a>
+          </li>
+          <li>
+            <a id="usermanager" href="userManager.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 用户管理</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img alt="logo" src="images/user.png"> 个人中心 <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a id="logout" href="javascript:void(0)">
+                  <i class="icon-signout"></i>
+                  退出
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid mainContainer">
+    <div class="row-fluid">
+      <div class="btn-group typeswitch" role="group">
+          <button id="staticmap" type="button" class="btn btn-default select"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 聚合图</button>
+          <button id="heatmap" type="button" class="btn btn-default"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 热点图</button>
+          <button id="pointmap" type="button" class="btn btn-default"><span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span> 点云图</button>
+      </div>
+      <div id="mapchart" class="vertical-panel left col-md-6 loading-light" style="padding: 0 !important;"></div>
+      <div class="vertical-panel right col-md-6 loading-dark">
+        <div id="piechart"></div>
+        <div id="table"></div>
+      </div>
+      <p class="total-num text-center"></p>
+    </div>
+  </div>
+  <div class='notifications top-right'></div>
+  <script src="lib/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GGvhGfDF6GyuDoE1l2MFkzVC"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+  <script type="text/javascript">
+      require(["modules/statics"], function(statics) {
+        var statics = new statics(configOptions);
+      });
+  </script>
+</body>
+</html>
